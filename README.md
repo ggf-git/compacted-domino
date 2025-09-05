@@ -10,7 +10,7 @@ The model looks for solutions within a rectangle grid, of width and height defin
 The **n** parameter defines the Domino-n set, as described in the blog post. Note that domino numbers range from 1 to n here, instead of from 0 to n, due to 0 representing an empty square. This means that if you wanted to look for solutions of the Domino-6 set as defined in the post, you'd have to set n := 7.
 
 # Variables and constraints rundown
-The **SQ** variables, indexed by row and column, represents the square in that position in the modeled grid. SQ can range from 0 to n, with 0 representing the square being empty. The area of a solution is then the number of SQ variables that are strictly greater than 0.
+The **SQ** variables, indexed by row and column, represent the square in that position in the modeled grid. SQ can range from 0 to n, with 0 representing the square being empty. The area of a solution is then the number of SQ variables that are strictly greater than 0.
 
 The **DOMINO** variables are indexed by [row, column, a, b], with a and b being numbers from 1 to n. They are boolean variables that represent the placement of the (a,b) domino piece in the (row, column) position. More specifically, SQ[row,column] == a, and one of the (up to) 4 adjacent SQ must be b. This behaviour is codified by the **Domino definition constraints**. Cases where a == b and a != b are handled separately for efficiency, due to the symmetry inherent to (a,a) domino pieces.
 
